@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Quiz</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f4f8;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        h1 {
+            color: #4CAF50;
+            text-align: center;
+            font-size: 36px;
+            margin-bottom: 30px;
+        }
+
+        #quizForm {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 80%;
+            max-width: 600px;
+        }
+
+        .question {
+            margin-bottom: 20px;
+            font-size: 18px;
+        }
+
+        label {
+            display: block;
+            margin: 8px 0;
+            font-size: 16px;
+        }
+
+        input[type="radio"] {
+            margin-right: 10px;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            font-size: 18px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        #result {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        #countdown {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 18px;
+            color: #FF5722;
+        }
+    </style>
+    <script>
+        let correctAnswers = ["B", "C", "C", "C", "B", "A", "B", "A", "C", "A"];
+
+        function checkAnswers() {
+            let userAnswers = [];
+            for (let i = 1; i <= 10; i++) {
+                let answer = document.querySelector(`input[name=question${i}]:checked`);
+                userAnswers.push(answer ? answer.value : null);
+            }
+
+            if (userAnswers.includes(null)) {
+                alert("Por favor, responde todas las preguntas.");
+                return;
+            }
+
+            let isCorrect = JSON.stringify(userAnswers) === JSON.stringify(correctAnswers);
+
+            if (isCorrect) {
+                document.getElementById("result").innerHTML = `Enhorabuena has desbloqueado el Path of Exile 2 y será añadido a tu cuenta de Steam en "El temporizador hasta las 00:00 de la noche".`;
+                startCountdown();
+            } else {
+                document.getElementById("result").innerHTML = `Incorrecto. Por favor, inténtalo de nuevo.`;
+            }
+        }
+
+        function startCountdown() {
+            let now = new Date();
+            let midnight = new Date();
+            midnight.setHours(24, 0, 0, 0);
+
+            let timer = setInterval(function () {
+                let currentTime = new Date();
+                let remaining = midnight - currentTime;
+
+                if (remaining <= 0) {
+                    clearInterval(timer);
+                    document.getElementById("countdown").innerHTML = "¡Es medianoche!";
+                } else {
+                    let hours = Math.floor(remaining / (1000 * 60 * 60));
+                    let minutes = Math.floor((remaining % (1000 * 60 * 60)) / (1000 * 60));
+                    let seconds = Math.floor((remaining % (1000 * 60)) / 1000);
+
+                    document.getElementById("countdown").innerHTML = `${hours}h ${minutes}m ${seconds}s restantes.`;
+                }
+            }, 1000);
+        }
+    </script>
+</head>
+<body>
+    <div>
+        <h1>Quiz Interactivo</h1>
+        <form id="quizForm">
+            <div class="question">
+                <p>1. Si quieres llegar al trabajo a las 8:00 a.m., el tren tarda 25 minutos en llegar y necesitas 10 minutos para caminar hasta la estación, ¿a qué hora deberías salir de casa?</p>
+                <label><input type="radio" name="question1" value="A"> 7:10 a.m.</label>
+                <label><input type="radio" name="question1" value="B"> 7:20 a.m.</label>
+                <label><input type="radio" name="question1" value="C"> 7:30 a.m.</label>
+                <label><input type="radio" name="question1" value="D"> 7:40 a.m.</label>
+            </div>
+
+            <div class="question">
+                <p>2. Tienes una reunión a las 5:00 p.m., el trayecto en "topo" tarda 35 minutos desde tu estación. Además, necesitas 15 minutos para caminar hasta la estación más cercana y 5 minutos para esperar el próximo tren. ¿A qué hora deberías salir de casa?</p>
+                <label><input type="radio" name="question2" value="A"> 4:00 p.m.</label>
+                <label><input type="radio" name="question2" value="B"> 4:10 p.m.</label>
+                <label><input type="radio" name="question2" value="C"> 4:20 p.m.</label>
+                <label><input type="radio" name="question2" value="D"> 4:30 p.m.</label>
+            </div>
+
+            <div class="question">
+                <p>3. ¿Qué hora es cuando el reloj marca 10:30 y han pasado 45 minutos desde que inició la reunión?</p>
+                <label><input type="radio" name="question3" value="A"> 11:00</label>
+                <label><input type="radio" name="question3" value="B"> 11:10</label>
+                <label><input type="radio" name="question3" value="C"> 11:15</label>
+                <label><input type="radio" name="question3" value="D"> 11:30</label>
+            </div>
+
+            <div class="question">
+                <p>4. Si el tren sale a las 3:00 p.m. y tienes que llegar 10 minutos antes para comprar el billete, ¿a qué hora deberías llegar a la estación?</p>
+                <label><input type="radio" name="question4" value="A"> 2:30 p.m.</label>
+                <label><input type="radio" name="question4" value="B"> 2:45 p.m.</label>
+                <label><input type="radio" name="question4" value="C"> 2:50 p.m.</label>
+                <label><input type="radio" name="question4" value="D"> 3:00 p.m.</label>
+            </div>
+
+            <div class="question">
+                <p>5. ¿Cuántos minutos faltan si son las 7:40 p.m. y tienes una cita a las 8:00 p.m.?</p>
+                <label><input type="radio" name="question5" value="A"> 20 minutos</label>
+                <label><input type="radio" name="question5" value="B"> 10 minutos</label>
+                <label><input type="radio" name="question5" value="C"> 30 minutos</label>
+                <label><input type="radio" name="question5" value="D"> 40 minutos</label>
+            </div>
+
+            <div class="question">
+                <p>6. Si el vuelo sale a las 8:00 a.m. y el trayecto al aeropuerto toma 40 minutos, ¿a qué hora debes salir de casa para llegar a tiempo?</p>
+                <label><input type="radio" name="question6" value="A"> 7:00 a.m.</label>
+                <label><input type="radio" name="question6" value="B"> 7:20 a.m.</label>
+                <label><input type="radio" name="question6" value="C"> 7:30 a.m.</label>
+                <label><input type="radio" name="question6" value="D"> 8:00 a.m.</label>
+            </div>
+
+            <div class="question">
+                <p>7. Tienes que estar en la estación a las 9:00 p.m. ¿Cuántos minutos te quedan si son las 8:30 p.m.?</p>
+                <label><input type="radio" name="question7" value="A"> 15 minutos</label>
+                <label><input type="radio" name="question7" value="B"> 30 minutos</label>
+                <label><input type="radio" name="question7" value="C"> 45 minutos</label>
+                <label><input type="radio" name="question7" value="D"> 60 minutos</label>
+            </div>
+
+            <div class="question">
+                <p>8. Si el tren pasa a las 6:00 a.m. y necesitas 15 minutos para caminar, ¿a qué hora deberías salir de casa?</p>
+                <label><input type="radio" name="question8" value="A"> 5:45 a.m.</label>
+                <label><input type="radio" name="question8" value="B"> 5:50 a.m.</label>
+                <label><input type="radio" name="question8" value="C"> 6:00 a.m.</label>
+                <label><input type="radio" name="question8" value="D"> 6:15 a.m.</label>
+            </div>
+
+            <div class="question">
+                <p>9. Si el reloj marca las 12:00 y has estado trabajando por 4 horas, ¿a qué hora empezarías a trabajar?</p>
+                <label><input type="radio" name="question9" value="A"> 8:00 a.m.</label>
+                <label><input type="radio" name="question9" value="B"> 9:00 a.m.</label>
+                <label><input type="radio" name="question9" value="C"> 10:00 a.m.</label>
+                <label><input type="radio" name="question9" value="D"> 11:00 a.m.</label>
+            </div>
+
+            <div class="question">
+                <p>10. Si viajas a las 3:00 p.m. y tu vuelo sale a las 5:00 p.m., ¿cuántas horas tienes hasta el vuelo?</p>
+                <label><input type="radio" name="question10" value="A"> 2 horas</label>
+                <label><input type="radio" name="question10" value="B"> 1 hora</label>
+                <label><input type="radio" name="question10" value="C"> 3 horas</label>
+                <label><input type="radio" name="question10" value="D"> 4 horas</label>
+            </div>
+
+            <button type="button" onclick="checkAnswers()">Enviar respuestas</button>
+        </form>
+
+        <div id="result"></div>
+        <div id="countdown"></div>
+    </div>
+</body>
+</html>
