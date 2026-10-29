@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Tabla de sparklines sobre la esperanza de vida en cinco países entre 2000 y 2023.">
+  <title>Esperanza de vida · Sparklines</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <nav class="nav" aria-label="Navegación principal">
+      <a class="brand" href="index.html">PEC 2 · Pablo Arriaga</a>
+      <div class="nav-links">
+        <a href="barras-apiladas.html">Barras apiladas</a>
+        <a href="coordenadas-paralelas.html">Coordenadas paralelas</a>
+        <a href="sparklines.html" aria-current="page">Sparklines</a>
+      </div>
+    </nav>
+  </header>
+  <main>
+    <section class="hero">
+      <div>
+        <p class="eyebrow">Técnica 3 · Sparklines</p>
+        <h1>¿Cómo ha cambiado la esperanza de vida?</h1>
+        <p class="lede">Evolución entre 2000 y 2023 en cinco países. Todos los minigráficos comparten la misma escala vertical, de 45 a 86 años.</p>
+      </div>
+      <div class="meta-panel">
+        <p><strong>Función:</strong> tendencia temporal compacta</p>
+        <p><strong>Datos:</strong> una serie cuantitativa por país</p>
+        <p><strong>Interacción:</strong> consulta por año</p>
+      </div>
+    </section>
+
+    <section class="chart-shell" aria-labelledby="chart-title">
+      <div class="chart-heading">
+        <div>
+          <h2 id="chart-title">Cinco trayectorias en el espacio de una tabla</h2>
+          <p>Los valores se muestran cada dos años y para 2023. Pasa el cursor por una línea o enfócala con el teclado para consultar un dato.</p>
+        </div>
+      </div>
+      <p class="insight" id="spark-detail" aria-live="polite"><strong>Exploración:</strong> mueve el cursor sobre un sparkline para consultar el año y el valor.</p>
+      <div style="overflow-x:auto">
+        <table class="spark-table">
+          <thead><tr><th>País</th><th>Periodo</th><th>Tendencia</th><th class="latest">Valor en 2023</th></tr></thead>
+          <tbody id="spark-body"></tbody>
+        </table>
+      </div>
+      <p class="insight"><strong>Lectura principal:</strong> los cinco países mejoran a largo plazo, pero con niveles y ritmos muy distintos. México muestra la ruptura más visible durante 2020–2021 y una recuperación posterior; Nigeria mantiene una mejora gradual desde un nivel mucho más bajo.</p>
+    </section>
+
+    <section class="notes-grid" aria-label="Análisis de la técnica">
+      <article class="note"><h3>Por qué encaja</h3><p>La pregunta requiere comparar varias tendencias sin dedicar un gráfico grande a cada país. El sparkline aporta contexto junto al nombre y al último valor.</p></article>
+      <article class="note"><h3>Ventaja</h3><p>Condensa una serie temporal en muy poco espacio y facilita explorar una tabla de entidades sin perder su evolución.</p></article>
+      <article class="note"><h3>Limitación</h3><p>No está pensado para leer valores exactos. Por eso se añade el valor final y una consulta interactiva, manteniendo una escala común para comparar.</p></article>
+    </section>
+
+    <p class="source"><strong>Fuente:</strong> Banco Mundial, <a href="https://data.worldbank.org/indicator/SP.DYN.LE00.IN">esperanza de vida al nacer</a>, World Development Indicators, código SP.DYN.LE00.IN. Datos 2000–2023 consultados el 29 de octubre de 2026. Licencia <a href="https://datacatalog.worldbank.org/public-licenses#cc-by">CC BY 4.0</a>. Para mantener la visualización compacta se representa un dato cada dos años, además de 2023.</p>
+  </main>
+  <footer><div class="inner"><a href="index.html">← Volver a las tres técnicas</a></div></footer>
+  <script src="data.js"></script>
+  <script src="charts.js"></script>
+</body>
+</html>
+

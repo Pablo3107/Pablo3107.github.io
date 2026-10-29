@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Gráfico de barras apiladas sobre la estructura por edades de cinco países en 2025.">
+  <title>Estructura de la población · Barras apiladas</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <nav class="nav" aria-label="Navegación principal">
+      <a class="brand" href="index.html">PEC 2 · Pablo Arriaga</a>
+      <div class="nav-links">
+        <a href="barras-apiladas.html" aria-current="page">Barras apiladas</a>
+        <a href="coordenadas-paralelas.html">Coordenadas paralelas</a>
+        <a href="sparklines.html">Sparklines</a>
+      </div>
+    </nav>
+  </header>
+  <main>
+    <section class="hero">
+      <div>
+        <p class="eyebrow">Técnica 1 · Stacked Bar Graph</p>
+        <h1>¿Qué países tienen una población más joven?</h1>
+        <p class="lede">Estructura de la población por grandes grupos de edad en cinco países, 2025. Cada barra suma el 100 % de la población.</p>
+      </div>
+      <div class="meta-panel">
+        <p><strong>Función:</strong> parte de un total</p>
+        <p><strong>Datos:</strong> dos categorías y una medida cuantitativa</p>
+        <p><strong>Interacción:</strong> consulta de valores</p>
+      </div>
+    </section>
+
+    <section class="chart-shell" aria-labelledby="chart-title">
+      <div class="chart-heading">
+        <div>
+          <h2 id="chart-title">Estructuras demográficas contrastadas</h2>
+          <p>La longitud de cada segmento representa su porcentaje dentro de la población total del país.</p>
+        </div>
+      </div>
+      <div class="legend" aria-label="Leyenda">
+        <span class="legend-item"><span class="swatch young"></span>0–14 años</span>
+        <span class="legend-item"><span class="swatch working"></span>15–64 años</span>
+        <span class="legend-item"><span class="swatch older"></span>65 años o más</span>
+      </div>
+      <div class="chart" id="stacked-chart"><div class="tooltip" hidden></div></div>
+      <p class="insight"><strong>Lectura principal:</strong> Nigeria presenta la población más joven: cuatro de cada diez habitantes tienen menos de 15 años. Japón muestra el perfil opuesto, con casi un 30 % de población de 65 años o más.</p>
+    </section>
+
+    <section class="notes-grid" aria-label="Análisis de la técnica">
+      <article class="note"><h3>Por qué encaja</h3><p>La pregunta compara simultáneamente la composición de varios países. La versión al 100 % elimina el efecto del tamaño total de cada población.</p></article>
+      <article class="note"><h3>Ventaja</h3><p>Permite ver de un vistazo tanto el peso de cada grupo como el contraste general entre estructuras demográficas.</p></article>
+      <article class="note"><h3>Limitación</h3><p>Los segmentos centrales no comparten una línea base. Para diferencias pequeñas entre países sería más preciso utilizar barras agrupadas.</p></article>
+    </section>
+
+    <p class="source"><strong>Fuente:</strong> Banco Mundial, <a href="https://databank.worldbank.org/source/world-development-indicators">World Development Indicators</a>. Indicadores SP.POP.0014.TO.ZS, SP.POP.1564.TO.ZS y SP.POP.65UP.TO.ZS; datos actualizados el 8 de octubre de 2026. Licencia <a href="https://datacatalog.worldbank.org/public-licenses#cc-by">CC BY 4.0</a>. Valores redondeados a una decimal en las etiquetas.</p>
+  </main>
+  <footer><div class="inner"><a href="index.html">← Volver a las tres técnicas</a></div></footer>
+  <script src="data.js"></script>
+  <script src="charts.js"></script>
+</body>
+</html>
+

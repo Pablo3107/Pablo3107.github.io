@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Gráfico de coordenadas paralelas con las 150 observaciones del conjunto Iris.">
+  <title>Perfiles de flores Iris · Coordenadas paralelas</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <nav class="nav" aria-label="Navegación principal">
+      <a class="brand" href="index.html">PEC 2 · Pablo Arriaga</a>
+      <div class="nav-links">
+        <a href="barras-apiladas.html">Barras apiladas</a>
+        <a href="coordenadas-paralelas.html" aria-current="page">Coordenadas paralelas</a>
+        <a href="sparklines.html">Sparklines</a>
+      </div>
+    </nav>
+  </header>
+  <main>
+    <section class="hero">
+      <div>
+        <p class="eyebrow">Técnica 2 · Parallel Coordinates Plot</p>
+        <h1>¿Qué medidas distinguen a las especies Iris?</h1>
+        <p class="lede">Comparación simultánea de cuatro medidas de sépalo y pétalo en 150 flores de tres especies.</p>
+      </div>
+      <div class="meta-panel">
+        <p><strong>Función:</strong> comparación multivariable</p>
+        <p><strong>Datos:</strong> 150 observaciones y cuatro variables cuantitativas</p>
+        <p><strong>Interacción:</strong> filtrado y resaltado</p>
+      </div>
+    </section>
+
+    <section class="chart-shell" aria-labelledby="chart-title">
+      <div class="chart-heading">
+        <div>
+          <h2 id="chart-title">Cada línea representa una flor</h2>
+          <p>Los cuatro ejes usan escalas independientes, expresadas en centímetros. Filtra por especie para reducir la superposición.</p>
+        </div>
+      </div>
+      <div class="controls" role="group" aria-label="Filtrar por especie">
+        <button class="filter" type="button" data-species="all" aria-pressed="true">Todas</button>
+        <button class="filter" type="button" data-species="setosa" aria-pressed="false">Setosa</button>
+        <button class="filter" type="button" data-species="versicolor" aria-pressed="false">Versicolor</button>
+        <button class="filter" type="button" data-species="virginica" aria-pressed="false">Virginica</button>
+      </div>
+      <div class="legend" aria-label="Leyenda">
+        <span class="legend-item"><span class="swatch setosa"></span>Setosa</span>
+        <span class="legend-item"><span class="swatch versicolor"></span>Versicolor</span>
+        <span class="legend-item"><span class="swatch virginica"></span>Virginica</span>
+      </div>
+      <div class="chart" id="parallel-chart"><div class="tooltip" hidden></div></div>
+      <p class="insight"><strong>Lectura principal:</strong> las medidas del pétalo separan con claridad a Setosa del resto. Versicolor y Virginica se solapan más, aunque Virginica tiende a presentar pétalos más largos y anchos.</p>
+    </section>
+
+    <section class="notes-grid" aria-label="Análisis de la técnica">
+      <article class="note"><h3>Por qué encaja</h3><p>La técnica conserva las cuatro variables de cada observación y permite detectar perfiles que se repiten dentro de cada especie.</p></article>
+      <article class="note"><h3>Ventaja</h3><p>Muestra más de dos variables al mismo tiempo y ayuda a identificar grupos, relaciones y valores atípicos.</p></article>
+      <article class="note"><h3>Limitación</h3><p>Con 150 líneas aparece sobreposición. El color, la transparencia y el filtrado son necesarios para que el gráfico siga siendo legible.</p></article>
+    </section>
+
+    <p class="source"><strong>Fuente:</strong> Fisher, R. A. (1936), <a href="https://archive.ics.uci.edu/dataset/53/iris">Iris</a>, UCI Machine Learning Repository, DOI 10.24432/C56C76. 150 observaciones, cuatro variables cuantitativas y sin valores ausentes. Licencia <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.</p>
+  </main>
+  <footer><div class="inner"><a href="index.html">← Volver a las tres técnicas</a></div></footer>
+  <script src="data.js"></script>
+  <script src="charts.js"></script>
+</body>
+</html>
+
